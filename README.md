@@ -29,8 +29,7 @@ Matplotlib
 NumPy
 Pandas
 Preface
-[ 3 ]
-Only for Chapter 8, Advanced TensorFlow Programming and Chapter 9, Reinforcement
+. Only for Chapter 8, Advanced TensorFlow Programming and Chapter 9, Reinforcement
 Learning, you will need the following frameworks:
 Keras
 Pretty Tensor
