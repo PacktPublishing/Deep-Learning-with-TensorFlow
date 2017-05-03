@@ -31,7 +31,7 @@ print(model.summary())
 
 model.fit(X_train, y_train,\
      validation_data=(X_test, y_test),\
-           nb_epoch=3, batch_size=64)
+           epochs=3, batch_size=64)
 
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)

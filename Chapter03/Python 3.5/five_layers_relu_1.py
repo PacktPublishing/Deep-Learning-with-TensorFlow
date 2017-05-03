@@ -2,17 +2,14 @@ from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 import math
 
-
 logs_path = 'log_simple_stats_5_layers_relu_softmax'
 batch_size = 100
 learning_rate = 0.5
 training_epochs = 10
 
+mnist = input_data.read_data_sets("/tmp/data", one_hot=True)
 
-mnist = input_data.read_data_sets("data")
-
-
-X = tf.placeholder(tf.float32, [None, 28, 28, 1])
+X = tf.placeholder(tf.float32, [None, 784])
 Y_ = tf.placeholder(tf.float32, [None, 10])
 lr = tf.placeholder(tf.float32)
 

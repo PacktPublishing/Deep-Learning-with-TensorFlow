@@ -8,6 +8,7 @@ from matplotlib import pyplot as plt
 import matplotlib.image as mpimg
 from scipy import misc
 import EmotionDetectorUtils
+from EmotionDetectorUtils import testResult
 
 emotion = {0:'anger', 1:'disgust',\
            2:'fear',3:'happy',\
@@ -46,18 +47,25 @@ train_images, train_labels, valid_images, valid_labels, test_images = \
 
 sess = tf.InteractiveSession()
 
-new_saver = tf.train.import_meta_graph('logs/model.ckpt-1000.meta')
-new_saver.restore(sess, 'logs/model.ckpt-1000')
+new_saver = tf.train.import_meta_graph('logs/EmotionDetector_logs/model.ckpt-1000.meta')
+new_saver.restore(sess, 'logs/EmotionDetector_logs/model.ckpt-1000')
 tf.get_default_graph().as_graph_def()
 
 x = sess.graph.get_tensor_by_name("input:0")
 y_conv = sess.graph.get_tensor_by_name("output:0")
 
 image_0 = np.resize(gray,(1,48,48,1))
+tResult = testResult()
+num_evaluations = 1000
 
-result = sess.run(y_conv, feed_dict={x:image_0})
-label = sess.run(tf.argmax(result, 1))
-print(emotion[label[0]])
+for i in range(0,num_evaluations):
+	result = sess.run(y_conv, feed_dict={x:image_0})
+	label = sess.run(tf.argmax(result, 1))
+	label = label[0]
+	label = int(label)
+	tResult.evaluate(label)
+tResult.display_result(num_evaluations)
+
 
 
 

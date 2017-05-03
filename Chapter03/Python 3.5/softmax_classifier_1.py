@@ -10,14 +10,14 @@ learning_rate = 0.5
 training_epochs = 10
 mnist = input_data.read_data_sets("data", one_hot=True)
 
-X = tf.placeholder(tf.float32, [None, 784])
+X = tf.placeholder(tf.float32, [None, 784], name="input")
 Y_ = tf.placeholder(tf.float32, [None, 10])
 W = tf.Variable(tf.zeros([784, 10]))
 b = tf.Variable(tf.zeros([10]))
 XX = tf.reshape(X, [-1, 784])
 
 
-Y = tf.matmul(X, W) + b
+Y = tf.nn.softmax(tf.matmul(XX, W) + b, name="output")
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y_, logits=Y))
 correct_prediction = tf.equal(tf.argmax(Y, 1), tf.argmax(Y_, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))

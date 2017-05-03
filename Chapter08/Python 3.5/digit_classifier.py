@@ -1,4 +1,4 @@
-from six.moves import xrange  
+from six.moves import range  
 import tensorflow as tf
 import prettytensor as pt
 from prettytensor.tutorial import data_utils
@@ -60,7 +60,7 @@ runner = pt.train.Runner(save_path=FLAGS.save_path)
 
 
 with tf.Session():
-    for epoch in xrange(10):
+    for epoch in range(10):
         train_images, train_labels = \
                       data_utils.permute_data\
                       ((train_images, train_labels))

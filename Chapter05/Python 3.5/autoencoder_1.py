@@ -11,7 +11,7 @@ mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.01
-training_epochs = 10
+training_epochs = 20
 batch_size = 256
 display_step = 1
 examples_to_show = 10
@@ -110,7 +110,7 @@ with tf.Session() as sess:
         y_pred, feed_dict=\
         {X: mnist.test.images[:examples_to_show]})
     # Compare original images with their reconstructions
-    f, a = plt.subplots(2, 4, figsize=(10, 5))
+    f, a = plt.subplots(2, 10, figsize=(10, 2))
     for i in range(examples_to_show):
         a[0][i].imshow(np.reshape(mnist.test.images[i], (28, 28)))
         a[1][i].imshow(np.reshape(encode_decode[i], (28, 28)))

@@ -1,4 +1,3 @@
-__author__ = 'Charlie'
 import pandas as pd
 import numpy as np
 import os, sys, inspect
@@ -67,12 +66,12 @@ def read_data(data_dir, force=False):
         data_frame = pd.read_csv(train_filename)
         data_frame['Pixels'] = data_frame['Pixels'].apply(lambda x: np.fromstring(x, sep=" ") / 255.0)
         data_frame = data_frame.dropna()
-        print "Reading train.csv ..."
+        print("Reading train.csv ...")
 
         train_images = np.vstack(data_frame['Pixels']).reshape(-1, IMAGE_SIZE, IMAGE_SIZE, 1)
-        print train_images.shape
+        print(train_images.shape)
         train_labels = np.array([map(create_onehot_label, data_frame['Emotion'].values)]).reshape(-1, NUM_LABELS)
-        print train_labels.shape
+        print(train_labels.shape)
 
         permutations = np.random.permutation(train_images.shape[0])
         train_images = train_images[permutations]
@@ -83,7 +82,7 @@ def read_data(data_dir, force=False):
         train_images = train_images[validation_percent:]
         train_labels = train_labels[validation_percent:]
 
-        print "Reading test.csv ..."
+        print("Reading test.csv ...")
         test_filename = os.path.join(data_dir, "test.csv")
         data_frame = pd.read_csv(test_filename)
         data_frame['Pixels'] = data_frame['Pixels'].apply(lambda x: np.fromstring(x, sep=" ") / 255.0)
@@ -92,7 +91,7 @@ def read_data(data_dir, force=False):
 
         with open(pickle_file, "wb") as file:
             try:
-                print 'Picking ...'
+                print('Picking ...')
                 save = {
                     "train_images": train_images,
                     "train_labels": train_labels,

@@ -73,8 +73,7 @@ def emotion_cnn(dataset):
         #b_conv2 = bias_variable([64])
         tf.summary.histogram("W_conv2", weights['wc2'])
         tf.summary.histogram("b_conv2", biases['bc2'])
-        conv_2 = tf.nn.conv2d(h_pool1, weights['wc2'],\
-                              strides=[1, 1, 1, 1], padding="SAME")
+        conv_2 = tf.nn.conv2d(h_pool1, weights['wc2'], strides=[1, 1, 1, 1], padding="SAME")
         h_conv2 = tf.nn.bias_add(conv_2, biases['bc2'])
         #h_conv2 = conv2d_basic(h_pool1, weights['wc2'], biases['bc2'])
         h_2 = tf.nn.relu(h_conv2)
@@ -82,7 +81,7 @@ def emotion_cnn(dataset):
         add_to_regularization_loss(weights['wc2'], biases['bc2'])
 
     with tf.name_scope("fc_1") as scope:
-        prob=0.5
+        prob = 0.5
         image_size = IMAGE_SIZE / 4
         h_flat = tf.reshape(h_pool2, [-1, image_size * image_size * 64])
         #W_fc1 = weight_variable([image_size * image_size * 64, 256])
@@ -136,16 +135,14 @@ def get_next_batch(images, labels, step):
 
 
 def main(argv=None):
-    train_images, train_labels, valid_images, valid_labels, test_images = \
-                  EmotionDetectorUtils.read_data(FLAGS.data_dir)
-    print "Train size: %s" % train_images.shape[0]
-    print 'Validation size: %s' % valid_images.shape[0]
-    print "Test size: %s" % test_images.shape[0]
+    train_images, train_labels, valid_images, valid_labels, test_images = EmotionDetectorUtils.read_data(FLAGS.data_dir)
+    print("Train size: %s" % train_images.shape[0])
+    print('Validation size: %s' % valid_images.shape[0])
+    print("Test size: %s" % test_images.shape[0])
 
     global_step = tf.Variable(0, trainable=False)
     dropout_prob = tf.placeholder(tf.float32)
-    input_dataset = tf.placeholder(tf.float32, \
-                                   [None, IMAGE_SIZE, IMAGE_SIZE, 1],name="input")
+    input_dataset = tf.placeholder(tf.float32, [None, IMAGE_SIZE, IMAGE_SIZE, 1],name="input")
     input_labels = tf.placeholder(tf.float32, [None, NUM_LABELS])
 
     pred = emotion_cnn(input_dataset)
@@ -161,26 +158,21 @@ def main(argv=None):
         ckpt = tf.train.get_checkpoint_state(FLAGS.logs_dir)
         if ckpt and ckpt.model_checkpoint_path:
             saver.restore(sess, ckpt.model_checkpoint_path)
-            print "Model Restored!"
+            print("Model Restored!")
 
-        for step in xrange(MAX_ITERATIONS):
-            batch_image, batch_label = get_next_batch(train_images,\
-                                                      train_labels, step)
-            feed_dict = {input_dataset: batch_image, \
-                         input_labels: batch_label}
+        for step in range(MAX_ITERATIONS):
+            batch_image, batch_label = get_next_batch(train_images, train_labels, step)
+            feed_dict = {input_dataset: batch_image, input_labels: batch_label}
 
             sess.run(train_op, feed_dict=feed_dict)
             if step % 10 == 0:
-                train_loss, summary_str = sess.run([loss_val, summary_op],\
-                                                   feed_dict=feed_dict)
+                train_loss, summary_str = sess.run([loss_val, summary_op], feed_dict=feed_dict)
                 summary_writer.add_summary(summary_str, global_step=step)
-                print "Training Loss: %f" % train_loss
+                print("Training Loss: %f" % train_loss)
 
             if step % 100 == 0:
-                valid_loss = sess.run(loss_val, \
-                                      feed_dict={input_dataset: valid_images,\
-                                                 input_labels: valid_labels})
-                print "%s Validation Loss: %f" % (datetime.now(), valid_loss)
+                valid_loss = sess.run(loss_val, feed_dict={input_dataset: valid_images, input_labels: valid_labels})
+                print("%s Validation Loss: %f" % (datetime.now(), valid_loss))
                 saver.save(sess, FLAGS.logs_dir + 'model.ckpt', global_step=step)
 
 

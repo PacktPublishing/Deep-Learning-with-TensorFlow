@@ -1,5 +1,5 @@
-import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow as tf
 import math
 
 logs_path = 'log_simple_stats_5_lyers_dropout'
@@ -7,12 +7,9 @@ batch_size = 100
 learning_rate = 0.5
 training_epochs = 10
 
+mnist = input_data.read_data_sets("/tmp/data", one_hot=True)
 
-
-mnist = input_data.read_data_sets("data")
-
-
-X = tf.placeholder(tf.float32, [None, 28, 28, 1])
+X = tf.placeholder(tf.float32, [None, 784])
 Y_ = tf.placeholder(tf.float32, [None, 10])
 lr = tf.placeholder(tf.float32)
 pkeep = tf.placeholder(tf.float32)
@@ -69,7 +66,8 @@ sess.run(init)
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())
+    writer = tf.summary.FileWriter(logs_path, \
+                                    graph=tf.get_default_graph())
     for epoch in range(training_epochs):
         batch_count = int(mnist.train.num_examples/batch_size)
         for i in range(batch_count):
@@ -79,9 +77,11 @@ with tf.Session() as sess:
             decay_speed = 2000 
             learning_rate = min_learning_rate + (max_learning_rate - min_learning_rate) * math.exp(-i/decay_speed)
             _, summary = sess.run([train_step, summary_op], {X: batch_x, Y_: batch_y, pkeep: 0.75, lr: learning_rate})
-            writer.add_summary(summary, epoch * batch_count + i)
-        print("Epoch: ", epoch)
+            writer.add_summary(summary,\
+                               epoch * batch_count + i)
+        print "Epoch: ", epoch
            
-    print("Accuracy: ", accuracy.eval(feed_dict={X: mnist.test.images, Y_: mnist.test.labels, pkeep: 0.75}))
-    print("done")
+    print "Accuracy: ", accuracy.eval\
+          (feed_dict={X: mnist.test.images, Y_: mnist.test.labels, pkeep: 0.75})
+    print "done"
 
