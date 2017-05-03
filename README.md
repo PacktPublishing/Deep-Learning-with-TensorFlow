@@ -21,7 +21,7 @@ The code will look like the following:
 ```
 
 All the examples have been implemented using Python version 2.7 on a Ubuntu Linux 64
-bit including the TensorFlow library version 0.11.
+bit including the TensorFlow library version 1.0.1.
 You will also need the following Python modules (preferably the latest version):
 Pip
 Bazel
