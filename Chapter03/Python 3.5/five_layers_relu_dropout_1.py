@@ -79,9 +79,9 @@ with tf.Session() as sess:
             _, summary = sess.run([train_step, summary_op], {X: batch_x, Y_: batch_y, pkeep: 0.75, lr: learning_rate})
             writer.add_summary(summary,\
                                epoch * batch_count + i)
-        print "Epoch: ", epoch
+        print ("Epoch: ", epoch)
            
-    print "Accuracy: ", accuracy.eval\
-          (feed_dict={X: mnist.test.images, Y_: mnist.test.labels, pkeep: 0.75})
-    print "done"
+    print ("Accuracy: ", accuracy.eval\
+          (feed_dict={X: mnist.test.images, Y_: mnist.test.labels, pkeep: 0.75}))
+    print ("done")
 
