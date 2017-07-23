@@ -82,7 +82,7 @@ def emotion_cnn(dataset):
 
     with tf.name_scope("fc_1") as scope:
         prob = 0.5
-        image_size = IMAGE_SIZE / 4
+        image_size = IMAGE_SIZE // 4
         h_flat = tf.reshape(h_pool2, [-1, image_size * image_size * 64])
         #W_fc1 = weight_variable([image_size * image_size * 64, 256])
         #b_fc1 = bias_variable([256])
