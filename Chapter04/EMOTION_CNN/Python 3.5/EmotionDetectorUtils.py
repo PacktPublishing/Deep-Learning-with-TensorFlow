@@ -8,7 +8,7 @@ IMAGE_SIZE = 48
 NUM_LABELS = 7
 VALIDATION_PERCENT = 0.1  # use 10 percent of training images for validation
 
-IMAGE_LOCATION_NORM = IMAGE_SIZE / 2
+IMAGE_LOCATION_NORM = IMAGE_SIZE // 2
 
 np.random.seed(0)
 
@@ -70,7 +70,7 @@ def read_data(data_dir, force=False):
 
         train_images = np.vstack(data_frame['Pixels']).reshape(-1, IMAGE_SIZE, IMAGE_SIZE, 1)
         print(train_images.shape)
-        train_labels = np.array([map(create_onehot_label, data_frame['Emotion'].values)]).reshape(-1, NUM_LABELS)
+        train_labels = np.array(list(map(create_onehot_label, data_frame['Emotion'].values))).reshape(-1, NUM_LABELS)
         print(train_labels.shape)
 
         permutations = np.random.permutation(train_images.shape[0])
