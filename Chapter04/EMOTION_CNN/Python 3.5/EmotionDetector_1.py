@@ -104,7 +104,7 @@ def emotion_cnn(dataset):
 weights = {
     'wc1': weight_variable([5, 5, 1, 32], name="W_conv1"),
     'wc2': weight_variable([3, 3, 32, 64],name="W_conv2"),
-    'wf1': weight_variable([(IMAGE_SIZE / 4) * (IMAGE_SIZE / 4) * 64, 256],name="W_fc1"),
+    'wf1': weight_variable([(IMAGE_SIZE // 4) * (IMAGE_SIZE // 4) * 64, 256],name="W_fc1"),
     'wf2': weight_variable([256, NUM_LABELS], name="W_fc2")
 }
 
@@ -186,118 +186,118 @@ if __name__ == "__main__":
 Train size: 3761
 Validation size: 417
 Test size: 1312
-WARNING:tensorflow:Passing a `GraphDef` to the SummaryWriter is deprecated. Pass a `Graph` object instead, such as `sess.graph`.
-Training Loss: 1.962236
-2016-11-05 22:39:36.645682 Validation Loss: 1.962719
-Training Loss: 1.907290
-Training Loss: 1.849100
-Training Loss: 1.871116
-Training Loss: 1.798998
-Training Loss: 1.885601
-Training Loss: 1.849380
-Training Loss: 1.843139
-Training Loss: 1.933691
-Training Loss: 1.829839
-Training Loss: 1.839772
-2016-11-05 22:42:58.951699 Validation Loss: 1.822431
-Training Loss: 1.772197
-Training Loss: 1.666473
-Training Loss: 1.620869
-Training Loss: 1.592660
-Training Loss: 1.422701
-Training Loss: 1.436721
-Training Loss: 1.348217
-Training Loss: 1.432023
-Training Loss: 1.347753
-Training Loss: 1.299889
-2016-11-05 22:46:55.144483 Validation Loss: 1.335237
-Training Loss: 1.108747
-Training Loss: 1.197601
-Training Loss: 1.245860
-Training Loss: 1.164120
-Training Loss: 0.994351
-Training Loss: 1.072356
-Training Loss: 1.193485
-Training Loss: 1.118093
-Training Loss: 1.021220
-Training Loss: 1.069752
-2016-11-05 22:50:17.677074 Validation Loss: 1.111559
-Training Loss: 1.099430
-Training Loss: 0.966327
-Training Loss: 0.960916
-Training Loss: 0.844742
-Training Loss: 0.979741
-Training Loss: 0.891897
-Training Loss: 1.013132
-Training Loss: 0.936738
-Training Loss: 0.911577
-Training Loss: 0.862605
-2016-11-05 22:53:30.999141 Validation Loss: 0.999061
-Training Loss: 0.800337
-Training Loss: 0.776097
-Training Loss: 0.799260
-Training Loss: 0.919926
-Training Loss: 0.758807
-Training Loss: 0.807968
-Training Loss: 0.856378
-Training Loss: 0.867762
-Training Loss: 0.656170
-Training Loss: 0.688761
-2016-11-05 22:56:53.256991 Validation Loss: 0.931223
-Training Loss: 0.696454
-Training Loss: 0.725157
-Training Loss: 0.674037
-Training Loss: 0.719200
-Training Loss: 0.749460
-Training Loss: 0.741768
-Training Loss: 0.702719
-Training Loss: 0.734194
-Training Loss: 0.669155
-Training Loss: 0.641528
-2016-11-05 23:00:06.530139 Validation Loss: 0.911489
-Training Loss: 0.764550
-Training Loss: 0.646964
-Training Loss: 0.724712
-Training Loss: 0.726692
-Training Loss: 0.656019
-Training Loss: 0.690552
-Training Loss: 0.537638
-Training Loss: 0.680097
-Training Loss: 0.554115
-Training Loss: 0.590837
-2016-11-05 23:03:15.351156 Validation Loss: 0.818303
-Training Loss: 0.656608
-Training Loss: 0.567394
-Training Loss: 0.545324
-Training Loss: 0.611726
-Training Loss: 0.600910
-Training Loss: 0.526467
-Training Loss: 0.584986
-Training Loss: 0.567015
-Training Loss: 0.555465
-Training Loss: 0.630097
-2016-11-05 23:06:26.575298 Validation Loss: 0.824178
-Training Loss: 0.662920
-Training Loss: 0.512493
-Training Loss: 0.475912
-Training Loss: 0.455112
-Training Loss: 0.567875
-Training Loss: 0.582927
-Training Loss: 0.509225
-Training Loss: 0.602916
-Training Loss: 0.521976
-Training Loss: 0.445122
-2016-11-05 23:09:40.136353 Validation Loss: 0.803449
-Training Loss: 0.435535
-Training Loss: 0.459343
-Training Loss: 0.481706
-Training Loss: 0.460640
-Training Loss: 0.554570
-Training Loss: 0.427962
-Training Loss: 0.512764
-Training Loss: 0.531128
-Training Loss: 0.364465
-Training Loss: 0.432366
-2016-11-05 23:12:50.769527 Validation Loss: 0.851074
+Training Loss: 1.951450
+2017-07-27 14:26:41.689096 Validation Loss: 1.958948
+Training Loss: 1.899691
+Training Loss: 1.873583
+Training Loss: 1.883454
+Training Loss: 1.794849
+Training Loss: 1.884183
+Training Loss: 1.848423
+Training Loss: 1.838916
+Training Loss: 1.918565
+Training Loss: 1.829074
+Training Loss: 1.864008
+2017-07-27 14:27:00.305351 Validation Loss: 1.790150
+Training Loss: 1.753058
+Training Loss: 1.615597
+Training Loss: 1.571414
+Training Loss: 1.623350
+Training Loss: 1.494578
+Training Loss: 1.502531
+Training Loss: 1.349338
+Training Loss: 1.537164
+Training Loss: 1.364067
+Training Loss: 1.387331
+2017-07-27 14:27:20.328279 Validation Loss: 1.375231
+Training Loss: 1.186529
+Training Loss: 1.386529
+Training Loss: 1.270537
+Training Loss: 1.211034
+Training Loss: 1.096524
+Training Loss: 1.192567
+Training Loss: 1.279141
+Training Loss: 1.199098
+Training Loss: 1.017902
+Training Loss: 1.249009
+2017-07-27 14:27:38.844167 Validation Loss: 1.178693
+Training Loss: 1.222699
+Training Loss: 0.970940
+Training Loss: 1.012443
+Training Loss: 0.931900
+Training Loss: 1.016142
+Training Loss: 0.943123
+Training Loss: 1.099365
+Training Loss: 1.000534
+Training Loss: 0.925840
+Training Loss: 0.895967
+2017-07-27 14:27:57.399234 Validation Loss: 1.103102
+Training Loss: 0.863209
+Training Loss: 0.833549
+Training Loss: 0.812724
+Training Loss: 1.009514
+Training Loss: 1.024465
+Training Loss: 0.961753
+Training Loss: 0.986352
+Training Loss: 0.959654
+Training Loss: 0.774006
+Training Loss: 0.858462
+2017-07-27 14:28:15.782431 Validation Loss: 1.000128
+Training Loss: 0.663166
+Training Loss: 0.785379
+Training Loss: 0.821995
+Training Loss: 0.945040
+Training Loss: 0.909402
+Training Loss: 0.797702
+Training Loss: 0.769628
+Training Loss: 0.750213
+Training Loss: 0.722645
+Training Loss: 0.800091
+2017-07-27 14:28:34.632889 Validation Loss: 0.924810
+Training Loss: 0.878261
+Training Loss: 0.817574
+Training Loss: 0.856897
+Training Loss: 0.752512
+Training Loss: 0.881165
+Training Loss: 0.710394
+Training Loss: 0.721797
+Training Loss: 0.726897
+Training Loss: 0.624348
+Training Loss: 0.730256
+2017-07-27 14:28:53.171239 Validation Loss: 0.901341
+Training Loss: 0.685925
+Training Loss: 0.630337
+Training Loss: 0.656826
+Training Loss: 0.666020
+Training Loss: 0.627277
+Training Loss: 0.698149
+Training Loss: 0.722851
+Training Loss: 0.722231
+Training Loss: 0.701155
+Training Loss: 0.684319
+2017-07-27 14:29:11.596521 Validation Loss: 0.894154
+Training Loss: 0.738686
+Training Loss: 0.580629
+Training Loss: 0.545667
+Training Loss: 0.614124
+Training Loss: 0.640999
+Training Loss: 0.762669
+Training Loss: 0.628534
+Training Loss: 0.690788
+Training Loss: 0.628837
+Training Loss: 0.565587
+2017-07-27 14:29:30.075707 Validation Loss: 0.825970
+Training Loss: 0.551373
+Training Loss: 0.466755
+Training Loss: 0.583116
+Training Loss: 0.644869
+Training Loss: 0.626141
+Training Loss: 0.609953
+Training Loss: 0.622723
+Training Loss: 0.696944
+Training Loss: 0.543604
+Training Loss: 0.436234
+2017-07-27 14:29:48.517299 Validation Loss: 0.873586
+
 >>> 
 """
