@@ -16,9 +16,9 @@ y_conv = sess.graph.get_tensor_by_name("output:0")
 num = randint(0, mnist.test.images.shape[0])
 img = mnist.test.images[num]
 
-result = sess.run(["input:0", y_conv], feed_dict= {x:img})
-print(result)
-print(sess.run(tf.argmax(result, 1)))
+result = sess.run(["input:0", y_conv], feed_dict= {x:[img]})
+print(result[1])
+print(sess.run(tf.argmax(result[1], 1)))
 
 plt.imshow(image_b.reshape([28, 28]), cmap='Greys')
 plt.show()
